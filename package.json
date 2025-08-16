@@ -1,0 +1,22 @@
+{
+  "name": "poker-notation-parser",
+  "version": "0.0.1",
+  "description": "A compressed poker notation parser that converts shorthand into full hand histories",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest"
+  },
+  "keywords": [
+    "poker"
+  ],
+  "author": "gordonlim",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

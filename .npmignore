@@ -1,0 +1,9 @@
+/tmp
+/src
+/node_modules
+
+.DS_Store
+
+tsconfig.json
+tsup.config.js
+vitest.config.ts
