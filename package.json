@@ -14,7 +14,12 @@
   ],
   "author": "gordonlim",
   "license": "MIT",
+  "dependencies": {
+    "assert": "^2.1.0",
+    "poker-ts": "file:../poker-ts"
+  },
   "devDependencies": {
+    "@types/assert": "^1.5.11",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"

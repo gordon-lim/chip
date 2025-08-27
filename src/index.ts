@@ -1,3 +1,3 @@
-import { parseMultipleHands } from './poker';
+import { parseCHIP } from './parser';
 
-export const parseCHIP = parseMultipleHands;
+export { parseCHIP };
