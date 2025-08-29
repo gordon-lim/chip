@@ -1,5 +1,4 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { Table } from 'poker-ts';
 import {
   formatForcedBet,
   formatPlayerStacks,
@@ -12,7 +11,6 @@ import {
 } from '../src/string';
 import { PRINT_LABELS } from '../src/constants/label';
 import { ROUNDS } from '../src/constants/rounds';
-import { POS } from '../src/constants/pos';
 import { Card, ActionResult } from '../src/types';
 
 // Mock the table module

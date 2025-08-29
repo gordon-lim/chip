@@ -98,7 +98,7 @@ function formatPlayerToAct(table: InstanceType<typeof Table>, cards: (Card | nul
     return `\n${playerPos} is next to act with ${cards.map(formatCard).join(' ')}\n`;
 }
 
-function formatPlayerHoleCards(table: InstanceType<typeof Table>, playerHoleCards: { [seatIndex: number]: (Card | null)[] }) : string {
+function formatPlayerHoleCards(table: InstanceType<typeof Table>, playerHoleCards: { [seatIndex: number]: Card[] }) : string {
     
     let output = '';
     
@@ -107,10 +107,9 @@ function formatPlayerHoleCards(table: InstanceType<typeof Table>, playerHoleCard
     
     // Show each player's hole cards
     for (let seatIndex = 0; seatIndex < table.numSeats(); seatIndex++) {
-        if (playerHoleCards[seatIndex]) {
+        if (seatIndex in playerHoleCards) {
             const playerPos = getPlayerPosition(table, seatIndex);
             const holeCards = playerHoleCards[seatIndex];
-            // Check if all cards are null (player didn't reveal)
             if (holeCards.every(card => card === null)) {
                 output += `  ${playerPos} chucked\n`;
             } else {

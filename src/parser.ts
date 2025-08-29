@@ -113,11 +113,11 @@ function parseTableSettings(input: string): [number, number, number, number, num
     
     if(firstLine.length === 4) {
       numSeats = parseNumber(firstLine[2]) || 6;
-      buttonSeat = parseNumber(firstLine[3]) || 4;
+      buttonSeat = parseNumber(firstLine[3]) - 1 || 4;
     } else if(firstLine.length === 5) {
       ante = parseNumber(firstLine[2]) || 0;
       numSeats = parseNumber(firstLine[3]) || 6;
-      buttonSeat = parseNumber(firstLine[4]) || 4;
+      buttonSeat = parseNumber(firstLine[4]) - 1 || 4;
     }
   }
   

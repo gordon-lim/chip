@@ -61,21 +61,21 @@ const TABLE_SETTINGS = `200 400 100 6 4`;
 
 describe('parseTableSettings - Unit Tests', () => {
   it('parses complete 5-parameter input', () => {
-    const input = '200 400 100 6 4';
+    const input = '200 400 100 6 6';
     const result = parseTableSettings(input);
-    expect(result).toEqual([200, 400, 100, 6, 4]);
+    expect(result).toEqual([200, 400, 100, 6, 5]);
   });
 
   it('parses 4-parameter input (no ante)', () => {
-    const input = '100 200 9 5';
+    const input = '100 200 9 6';
     const result = parseTableSettings(input);
     expect(result).toEqual([100, 200, 0, 9, 5]);
   });
 
   it('handles k/m suffixes', () => {
-    const input = '1k 2k 500 6 1';
+    const input = '1k 2k 500 6 6';
     const result = parseTableSettings(input);
-    expect(result).toEqual([1000, 2000, 500, 6, 1]);
+    expect(result).toEqual([1000, 2000, 500, 6, 5]);
   });
 
   it('returns defaults for invalid input', () => {
@@ -167,6 +167,17 @@ describe('parseCards - Unit Tests', () => {
     ]);
   });
 
+  it('parses cards with and without spaces', () => {
+    const input = '6d6c 7hAs';
+    const result = parseCards(input);
+    expect(result).toEqual([
+      { rank: '6', suit: 'diamonds' },
+      { rank: '6', suit: 'clubs' },
+      { rank: '7', suit: 'hearts' },
+      { rank: 'A', suit: 'spades' }
+    ]);
+  });
+
   it('parses mixed suits', () => {
     const input = '6d 6c 7h As';
     const result = parseCards(input);
@@ -179,12 +190,13 @@ describe('parseCards - Unit Tests', () => {
   });
 
   it('handles case insensitivity', () => {
-    const input = 'ks qs js';
+    const input = 'ks qs js ac';
     const result = parseCards(input);
     expect(result).toEqual([
       { rank: 'K', suit: 'spades' },
       { rank: 'Q', suit: 'spades' },
-      { rank: 'J', suit: 'spades' }
+      { rank: 'J', suit: 'spades' },
+      { rank: 'A', suit: 'clubs' }
     ]);
   });
 
