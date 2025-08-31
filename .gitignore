@@ -1,5 +1,57 @@
-/tmp
-/dist
-/node_modules
-
+# ======================
+# OS / Editor Specific
+# ======================
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains IDEs
+.idea/
+
+# ======================
+# Node / TypeScript
+# ======================
+node_modules/
+jspm_packages/
+
+# Build outputs
+dist/
+build/
+coverage/
+*.log
+
+# TypeScript build info
+*.tsbuildinfo
+
+# ======================
+# Project Specific
+# ======================
+/tmp
+/demo.out
+
+# ======================
+# Testing / Coverage
+# ======================
+coverage/
+.nyc_output/
+
+# ======================
+# Environment / Secrets
+# ======================
+.env
+.env.local
+.env.*.local
+
+# ======================
+# Miscellaneous
+# ======================
+*.tmp
+*.swp
+*.swo
