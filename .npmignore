@@ -1,9 +1,38 @@
-/tmp
-/src
-/node_modules
+# ======================
+# Development & Config
+# ======================
+.vscode/
+.idea/
+*.log
+*.tmp
+*.swp
+*.swo
 
-.DS_Store
+# Git-related
+.git
+.gitignore
+.npmignore
 
+# ======================
+# Build / Source
+# ======================
+# Don’t ship raw TS source if you only want to publish compiled JS
+src/
 tsconfig.json
 tsup.config.js
-vitest.config.ts
+
+# Temporary / test
+tmp/
+tests/
+demo.ts
+demo.out
+
+# ======================
+# Coverage / Reports
+# ======================
+coverage/
+.nyc_output/
+
+# ======================
+# Other
+README.md~
