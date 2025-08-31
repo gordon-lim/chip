@@ -64,7 +64,7 @@ npx tsx demo.ts
   Supports `k` (thousands) and `m` (millions).  
   Example: `200k`, `1.5m`
 
-- **Actions:** (always in seating order)  
+- **Actions:** 
 
   | Symbol | Meaning               |
   |--------|-----------------------|
