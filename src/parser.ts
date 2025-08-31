@@ -8,7 +8,7 @@ import { CHIP_SYMBOLS } from './constants/chip';
 import assert from 'assert';
 
 
-function parseCHIP(input: string) {
+function parseChip(input: string) {
 
     let output = '';
 
@@ -34,16 +34,16 @@ function parseCHIP(input: string) {
     for (const line of lines.slice(2)) {
 
       if(!table.isHandInProgress()) {
+        if(isStacksLine(line)) {
+          const stacks = parsePlayerStacks(line);
+          updateStacks(table, stacks);
+        }
+        output += formatPlayerStacks(table);
         table.startHand();
         output += formatPlayerPositions(table);
       }
 
-      if(isStacksLine(line)) {
-        const stacks = parsePlayerStacks(line);
-        updateStacks(table, stacks);
-        output += formatPlayerStacks(table);
-      }
-      else if(isActionsLine(line)) {
+      if(isActionsLine(line)) {
         const actions = parsePlayerActions(line);
         const actionResults = takeActions(table, actions);
         output += formatPlayerActions(table, actionResults);
@@ -248,4 +248,4 @@ function parseNumber(str: string) {
   return parseFloat(trimmed);
 }
 
-export { parseCHIP, parseTableSettings, parsePlayerStacks, parsePlayerActions, parseCards };
+export { parseChip, parseTableSettings, parsePlayerStacks, parsePlayerActions, parseCards };

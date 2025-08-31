@@ -1,8 +1,10 @@
-import { parseCHIP, parseTableSettings, parsePlayerStacks, parsePlayerActions, parseCards } from '../src/parser';
+import { parseChip, parseTableSettings, parsePlayerStacks, parsePlayerActions, parseCards } from '../src/parser';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import * as tableModule from '../src/table';
 import * as stringModule from '../src/string';
 import * as linesModule from '../src/lines';
+import { Table } from 'poker-ts';
+import { revealHoleCards } from '../src/table';
 
 // Mock external dependencies
 vi.mock('poker-ts', () => ({
@@ -104,16 +106,16 @@ describe('parsePlayerStacks - Unit Tests', () => {
     expect(result).toEqual([100000, 2500000, 500000]);
   });
 
-  it('handles empty seats with "-"', () => {
+  it('handles no change in stacks with "-"', () => {
     const input = '100k - 200k - 300k';
     const result = parsePlayerStacks(input);
     expect(result).toEqual([100000, -1, 200000, -1, 300000]);
   });
 
-  it('handles mixed valid and empty seats', () => {
-    const input = '100k 200k - 100k - 100k';
+  it('handles empty seats with no stack', () => {
+    const input = '100k 200k 0 100k 0 100k';
     const result = parsePlayerStacks(input);
-    expect(result).toEqual([100000, 200000, -1, 100000, -1, 100000]);
+    expect(result).toEqual([100000, 200000, 0, 100000, 0, 100000]);
   });
 });
 
@@ -218,9 +220,9 @@ describe('parseCards - Unit Tests', () => {
 });
 
 // ===== INTEGRATION TESTS =====
-// These test the full parseCHIP function with mocked dependencies
+// These test the full parseChip function with mocked dependencies
 
-describe('parseCHIP - Integration Tests', () => {
+describe('parseChip - Integration Tests', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -228,7 +230,7 @@ describe('parseCHIP - Integration Tests', () => {
   it('calls parseTableSettings and formatForcedBet for first line', () => {
     const input = '200 400 100 6 4\n100k 200k 100k 100k 100k 100k\n';
     
-    parseCHIP(input);
+    parseChip(input);
     
     // Should call formatting functions
     expect(stringModule.formatForcedBet).toHaveBeenCalledTimes(1);
@@ -237,7 +239,7 @@ describe('parseCHIP - Integration Tests', () => {
   it('calls parsePlayerStacks and updateStacks for second line', () => {
     const input = '200 400 100 6 4\n100k 200k 100k 100k 100k 100k\n';
     
-    parseCHIP(input);
+    parseChip(input);
     
     expect(tableModule.updateStacks).toHaveBeenCalledWith(expect.any(Object), [100000, 200000, 100000, 100000, 100000, 100000]);
     expect(stringModule.formatPlayerStacks).toHaveBeenCalledTimes(1);
@@ -251,7 +253,7 @@ describe('parseCHIP - Integration Tests', () => {
     
     const input = '200 400 100 6 4\n100k 200k 100k 100k 100k 100k\nc f f c c x\n';
     
-    parseCHIP(input);
+    parseChip(input);
     
     expect(tableModule.takeActions).toHaveBeenCalledWith(expect.any(Object), ['c', 'f', 'f', 'c', 'c', 'x']);
     expect(stringModule.formatPlayerActions).toHaveBeenCalledTimes(1);
@@ -289,11 +291,11 @@ describe('parseCHIP - Integration Tests', () => {
         isAtStartOfBettingRound: vi.fn().mockReturnValue(true)
       }))
     }));
-    const { parseCHIP } = await import('../src/parser');
+    const { parseChip } = await import('../src/parser');
     
     const input = '200 400 100 6 4\n100k 200k 100k 100k 100k 100k\nah kh qh\njh\nks';
     
-    parseCHIP(input);
+    parseChip(input);
     
     expect(stringModule.formatCommunityCards).toHaveBeenCalledTimes(3);
     
@@ -353,7 +355,7 @@ describe('parseCHIP - Integration Tests', () => {
         winners: vi.fn().mockReturnValue([])
       }))
     }));
-    const { parseCHIP } = await import('../src/parser');
+    const { parseChip } = await import('../src/parser');
 
     // Mock revealHoleCards to return expected playerHoleCards
     vi.mocked(tableModule.revealHoleCards).mockReturnValue({
@@ -364,7 +366,7 @@ describe('parseCHIP - Integration Tests', () => {
     
     const input = '200 400 100 6 4\n100k 200k 100k 100k 100k 100k\nasks 2c3c th8h';
     
-    parseCHIP(input);
+    parseChip(input);
     
     // Verify revealHoleCards was called with correct parameters
     expect(tableModule.revealHoleCards).toHaveBeenCalledWith(
@@ -432,12 +434,12 @@ describe('parseCHIP - Integration Tests', () => {
         winners: vi.fn().mockReturnValue([]) // No winners determined by table yet
       }))
     }));
-    const { parseCHIP } = await import('../src/parser');
+    const { parseChip } = await import('../src/parser');
     
     // everyone folds except one player, hole cards not revealed
     const input = '200 400 100 6 4\n100k 200k 100k 100k 100k 100k\nf c f f f f';
     
-    parseCHIP(input);
+    parseChip(input);
     
     expect(tableModule.takeActions).toHaveBeenCalledWith(expect.any(Object), ['f', 'c', 'f', 'f', 'f', 'f']);
     
@@ -448,6 +450,5 @@ describe('parseCHIP - Integration Tests', () => {
       ]
     );
   });
-
 
 });

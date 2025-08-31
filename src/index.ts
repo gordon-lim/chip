@@ -1,3 +1,3 @@
-import { parseCHIP } from './parser';
+import { parseChip } from './parser';
 
-export { parseCHIP };
+export { parseChip };

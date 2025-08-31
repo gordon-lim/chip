@@ -38,6 +38,17 @@ describe('updateStacks', () => {
         const tablePlayers = table.seats();
         expect(tablePlayers[5]?.stack).toEqual(200000);
     });
+
+    it('should standup players with 0', () => {
+        updateStacks(table, [100, 0, 100, 0, 100, 0]);
+        const tablePlayers = table.seats();
+        expect(tablePlayers[0]).not.toBeNull();
+        expect(tablePlayers[1]).toBeNull();
+        expect(tablePlayers[2]).not.toBeNull();
+        expect(tablePlayers[3]).toBeNull();
+        expect(tablePlayers[4]).not.toBeNull();
+        expect(tablePlayers[5]).toBeNull();
+    });
 });
 
 describe('takeActions', () => {
@@ -153,6 +164,18 @@ describe('getPlayerPosition', () => {
                 expect(getPlayerPosition(table, 0)).toEqual('BTN');
                 expect(getPlayerPosition(table, 1)).toEqual('SB');
                 expect(getPlayerPosition(table, 2)).toEqual('BB');
+            });
+        });
+
+        describe('empty seats', () => {
+            it('should return the correct position', () => {
+                table.sitDown(2, 200);
+                table.sitDown(3, 300);
+                table.startHand();
+                expect(getPlayerPosition(table, 0)).toEqual('BTN');
+                expect(getPlayerPosition(table, 1)).toEqual('empty');
+                expect(getPlayerPosition(table, 2)).toEqual('SB');
+                expect(getPlayerPosition(table, 3)).toEqual('BB');
             });
         });
     });

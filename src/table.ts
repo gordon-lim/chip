@@ -12,7 +12,9 @@ function updateStacks(table: InstanceType<typeof Table>, stacks: number[]) {
         if(player !== null) {
             table.standUp(index);
         }
-        table.sitDown(index, stacks[index]);
+        if(stacks[index] > 0) {
+            table.sitDown(index, stacks[index]);
+        }
     });
 }
 
@@ -114,6 +116,10 @@ function getPlayerPosition(table: InstanceType<typeof Table>, seatIndex: number)
     const initialHandPlayers = table.initialHandPlayers();
     const numInitialHandPlayers = initialHandPlayers.filter((player: any) => player !== null).length;
     
+    // If seat is empty return "empty"
+    if(initialHandPlayers[seatIndex] === null) {
+        return "empty";
+    }
 
     // Calculate handPlayerIndex by counting non-null players before seatIndex
     let handPlayerIndex = 0;

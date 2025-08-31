@@ -136,31 +136,18 @@ function formatWinners(table: InstanceType<typeof Table>, showdownPots: { size: 
     } else {
         // Distribute pots to winners
         for (let i = 0; i < showdownPots.length; i++) {
-            const showdownPotAmount = showdownPots[i].size;
-            const potWinners = showdownPots[i].eligiblePlayers;
+
+            const winnerPlayers = showdownPots[i].eligiblePlayers;
             
-            // Calculate base distribution per winner
-            const baseAmount = Math.floor(showdownPotAmount / potWinners.length);
-            const oddChips = showdownPotAmount % potWinners.length;
-            
-            // Sort winners by position relative to dealer button for odd chip distribution
-            const buttonSeat = table.button();
-            const sortedWinners = [...potWinners].sort((a, b) => {
-                const aDistance = (a - buttonSeat + table.numSeats()) % table.numSeats();
-                const bDistance = (b - buttonSeat + table.numSeats()) % table.numSeats();
-                return aDistance - bDistance;
-            });
-            
-            // Distribute chips
-            for (let j = 0; j < sortedWinners.length; j++) {
-                const winnerSeatIndex = sortedWinners[j];
-                const winnerPlayer = getPlayerPosition(table, winnerSeatIndex);
-                
-                // First 'oddChips' players get an extra chip
-                const distribution = baseAmount + (j < oddChips ? 1 : 0);
-                
-                if (distribution > 0) {
-                    output += `  ${winnerPlayer} wins ${distribution}\n`;
+            for (let j = 0; j < winnerPlayers.length; j++) {
+                const winnerIndex = winnerPlayers[j];
+                const winnerPosition = getPlayerPosition(table, winnerIndex);
+                const potWinners = winners[i];
+                const winnerTuple = potWinners.find(([seatIndex, _1, _2, _3]) => seatIndex === winnerIndex);
+                const potPayout = winnerTuple ? winnerTuple[3] : 0;
+
+                if (potPayout > 0) {
+                    output += `  ${winnerPosition} wins ${potPayout}\n`;
                 }
             }
         }

@@ -408,7 +408,9 @@ describe('String Formatting Functions', () => {
     });
 
     it('should distribute pot equally among winners', () => {
-      mockTable.winners.mockReturnValue([0, 1, 2]);
+      mockTable.winners.mockReturnValue([
+        [[0, null, null, 300], [1, null, null, 300], [2, null, null, 300]]
+      ]);
       
       getPlayerPositionMock
         .mockReturnValueOnce('UTG')
@@ -425,7 +427,9 @@ describe('String Formatting Functions', () => {
     });
 
     it('should handle odd chips distribution', () => {
-      mockTable.winners.mockReturnValue([0, 1, 2]);
+      mockTable.winners.mockReturnValue([
+        [[0, null, null, 334], [1, null, null, 333], [2, null, null, 333]]
+      ]);
       
       getPlayerPositionMock
         .mockReturnValueOnce('UTG')
@@ -444,7 +448,10 @@ describe('String Formatting Functions', () => {
     });
 
     it('should handle multiple pots', () => {
-      mockTable.winners.mockReturnValue([0, 1]);
+      mockTable.winners.mockReturnValue([
+        [[0, null, null, 300], [1, null, null, 300]],
+        [[0, null, null, 200], [3, null, null, 200]]
+      ]);
       
       getPlayerPositionMock
         .mockReturnValueOnce('UTG')
@@ -472,7 +479,9 @@ describe('String Formatting Functions', () => {
     });
 
     it('should sort winners by position relative to button', () => {
-      mockTable.winners.mockReturnValue([5, 0, 3]);
+      mockTable.winners.mockReturnValue([
+        [[5, null, null, 100], [0, null, null, 100], [3, null, null, 100]]
+      ]);
       mockTable.button.mockReturnValue(1); // Button at seat 1
       
       getPlayerPositionMock
