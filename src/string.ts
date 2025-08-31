@@ -1,4 +1,4 @@
-import { Table } from 'poker-ts';
+import { Table } from 'chip-poker-ts';
 import { getPlayerPosition } from './table';
 import { PRINT_LABELS } from './constants/label';
 import { ROUNDS } from './constants/rounds';

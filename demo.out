@@ -1,0 +1,71 @@
+25/50 (ante: 10) - 6 seats
+
+Stacks:
+Seat 1: 12500
+Seat 2: 25000
+Seat 3: 10000
+Seat 4: 25000
+Seat 5: 25000
+Seat 6: 15000
+
+Positions:
+Seat 1: SB
+Seat 2: BB
+Seat 3: UTG
+Seat 4: HJ
+Seat 5: CO
+Seat 6: BTN
+
+*** Preflop ***
+  All players post ante 10
+  SB posts small blind 25
+  BB posts big blind 50
+  UTG folds
+  HJ folds
+  CO raises to 150
+  BTN folds
+  SB calls
+  BB calls
+*** Flop *** 2c Ad 6c
+  SB checks
+  BB bets 50
+  CO folds
+  SB calls
+*** Turn *** 4h
+  SB checks
+  BB checks
+*** River *** 3c
+  SB checks
+  BB checks
+*** Showdown ***
+  SB shows Ac 7c
+  BB shows 2d 2s
+*** Showdown ***
+  SB wins 610
+
+Stacks:
+Seat 1: 25000
+Seat 2: 24790
+Seat 3: 9990
+Seat 4: empty
+Seat 5: 24840
+Seat 6: 14990
+
+Positions:
+Seat 1: BTN
+Seat 2: SB
+Seat 3: BB
+Seat 4: empty
+Seat 5: UTG
+Seat 6: CO
+
+*** Preflop ***
+  All players post ante 10
+  SB posts small blind 25
+  BB posts big blind 50
+  UTG calls
+  CO calls
+  BTN calls
+  SB calls
+  BB checks
+

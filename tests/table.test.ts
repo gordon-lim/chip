@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { Table } from 'poker-ts';
+import { Table } from 'chip-poker-ts';
 import { updateStacks, takeActions, revealHoleCards, getPlayerPosition } from '../src/table';
 import { Card } from '../src/types';
 

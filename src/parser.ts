@@ -1,6 +1,6 @@
 import { isCardsLine, isStacksLine } from './lines';
 import { isActionsLine } from './lines';
-import { Table } from 'poker-ts';
+import { Table } from 'chip-poker-ts';
 import { updateStacks, takeActions, revealHoleCards } from './table';
 import { Card } from './types';
 import { formatForcedBet, formatPlayerStacks, formatPlayerPositions, formatPlayerActions, formatCommunityCards, formatPlayerHoleCards, formatWinners, formatPlayerToAct } from './string';

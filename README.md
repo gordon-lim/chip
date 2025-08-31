@@ -235,7 +235,7 @@ Seat 6: CO
 
 ## 🙏 Acknowledgment
 
-CHIP builds on the excellent [Typescript Poker Engine](https://github.com/claudijo-borovic/poker-engine) by **Claudijo Borovic**, with modifications to support this software.
+CHIP builds on the excellent [Typescript Poker Engine](https://github.com/claudijo/poker-ts) by **Claudijo Borovic**, with modifications to support this software.
 
 ## 📜 License
 

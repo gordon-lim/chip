@@ -3,11 +3,11 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import * as tableModule from '../src/table';
 import * as stringModule from '../src/string';
 import * as linesModule from '../src/lines';
-import { Table } from 'poker-ts';
+import { Table } from 'chip-poker-ts';
 import { revealHoleCards } from '../src/table';
 
 // Mock external dependencies
-vi.mock('poker-ts', () => ({
+vi.mock('chip-poker-ts', () => ({
   Table: vi.fn().mockImplementation(() => ({
     forcedBets: vi.fn().mockReturnValue({ ante: 100, smallBlind: 200, bigBlind: 400 }),
     numSeats: vi.fn().mockReturnValue(6),
@@ -267,7 +267,7 @@ describe('parseChip - Integration Tests', () => {
     
     // Reset modules and create new mock with specific values for this test
     vi.resetModules();
-    vi.doMock('poker-ts', () => ({
+    vi.doMock('chip-poker-ts', () => ({
       Table: vi.fn().mockImplementation(() => ({
         forcedBets: vi.fn().mockReturnValue({ ante: 100, smallBlind: 200, bigBlind: 400 }),
         numSeats: vi.fn().mockReturnValue(6),
@@ -333,7 +333,7 @@ describe('parseChip - Integration Tests', () => {
     vi.mocked(linesModule.isStacksLine).mockReturnValue(false);
 
     vi.resetModules();
-    vi.doMock('poker-ts', () => ({
+    vi.doMock('chip-poker-ts', () => ({
       Table: vi.fn().mockImplementation(() => ({
         forcedBets: vi.fn().mockReturnValue({ ante: 100, smallBlind: 200, bigBlind: 400 }),
         numSeats: vi.fn().mockReturnValue(6),
@@ -409,7 +409,7 @@ describe('parseChip - Integration Tests', () => {
     vi.mocked(linesModule.isStacksLine).mockReturnValue(false);
 
     vi.resetModules();
-    vi.doMock('poker-ts', () => ({
+    vi.doMock('chip-poker-ts', () => ({
       Table: vi.fn().mockImplementation(() => ({
         forcedBets: vi.fn().mockReturnValue({ ante: 100, smallBlind: 200, bigBlind: 400 }),
         numSeats: vi.fn().mockReturnValue(6),

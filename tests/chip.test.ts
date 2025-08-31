@@ -1,6 +1,6 @@
 import { parseCards } from '../src/parser';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { Table } from 'poker-ts';
+import { Table } from 'chip-poker-ts';
 import { revealHoleCards } from '../src/table';
 import assert from 'assert';
 import { formatWinners } from '../src/string';

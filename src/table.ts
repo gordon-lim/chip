@@ -1,4 +1,4 @@
-import { Table } from 'poker-ts';
+import { Table } from 'chip-poker-ts';
 import { Card, ActionResult } from './types';
 import { POS } from './constants/pos';
 import { Action } from './types';
