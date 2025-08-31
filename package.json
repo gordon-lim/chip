@@ -1,13 +1,21 @@
 {
-  "name": "poker-notation-parser",
+  "name": "chip",
   "version": "0.0.1",
-  "description": "A compressed poker notation parser that converts shorthand into full hand histories",
+  "description": "CHIP is a compact poker notation designed for efficient real-time hand logging with minimal keystrokes. It also outputs hand histories in a format ready for LLM-based analysis and AI-driven recommendations.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gordon-lim/chip"
+  },
+  "homepage": "https://github.com/gordon-lim/chip",
+  "bugs": {
+    "url": "https://github.com/gordon-lim/chip/issues"
   },
   "keywords": [
     "poker"
@@ -16,8 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "assert": "^2.1.0",
-    "chip-chip-poker-ts": "^0.0.1",
-    "chip-poker-ts": "file:../chip-poker-ts"
+    "chip-poker-ts": "^0.0.1"
   },
   "devDependencies": {
     "@types/assert": "^1.5.11",

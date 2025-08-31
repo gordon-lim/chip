@@ -1,38 +1,51 @@
-# ======================
-# Development & Config
-# ======================
+# macOS system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE/editor configs
 .vscode/
 .idea/
-*.log
-*.tmp
 *.swp
-*.swo
 
-# Git-related
-.git
-.gitignore
-.npmignore
-
-# ======================
-# Build / Source
-# ======================
-# Don’t ship raw TS source if you only want to publish compiled JS
-src/
-tsconfig.json
-tsup.config.js
-
-# Temporary / test
-tmp/
-tests/
-demo.ts
-demo.out
-
-# ======================
-# Coverage / Reports
-# ======================
+# Build outputs & dependencies
+node_modules/
 coverage/
-.nyc_output/
+*.log
+*.tsbuildinfo
 
-# ======================
-# Other
-README.md~
+# Tests
+test/
+__tests__/
+*.spec.ts
+*.test.ts
+
+# Source (exclude, since we only ship dist/)
+src/
+
+# Git & CI
+.github/
+.gitignore
+
+# TypeScript / Lint / Formatting configs (not needed in published pkg)
+tsconfig.json
+tslint.json
+.eslintrc*
+.eslintignore
+.prettierrc*
+.prettierignore
+commitlint.config.js
+
+# Env & secrets
+.env
+.env.*
+
+# Package manager locks
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Jest config
+jest.config.js
