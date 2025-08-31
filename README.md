@@ -64,7 +64,11 @@ npx tsx demo.ts
   Supports `k` (thousands) and `m` (millions).  
   Example: `200k`, `1.5m`
 
+<<<<<<< HEAD
 - **Actions:**
+=======
+- **Actions:** 
+>>>>>>> 3b3a619b8156786f18d0400a20b0be6f7d6c3b83
 
   | Symbol | Meaning               |
   |--------|-----------------------|
