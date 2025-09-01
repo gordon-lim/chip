@@ -57,7 +57,7 @@ npx tsx demo.ts
   *Note: `buttonSeat` is 1-indexed.*
 
 - **Stacks:**  
-  One line, listed from UTG → … → BB.  
+  One line, listed in seat order (arbitrary, but must be consistent).  
   Example: `100 200 150 250 100 180`
 
 - **Numbers:**  
